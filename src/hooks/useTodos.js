@@ -14,7 +14,6 @@ export const useTodos = () => {
         localStorage.setItem('todos', JSON.stringify(todos));
     }, [todos])
 
-
     const hndleNewTodo = (todo) => {
         const action = {
             type: '[TODO] Add Todo',
@@ -42,6 +41,8 @@ export const useTodos = () => {
 
     return {
         todos,
+        todosCount: todos.length,
+        pendingTodosCount: todos.filter(todo => !todo.done).length,
         hndleNewTodo,
         handleDeleteTodo,
         handleToggleTodo,
